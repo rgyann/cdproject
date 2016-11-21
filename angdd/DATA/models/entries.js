@@ -19,3 +19,14 @@ var entriesSchema = new Schema({
 var model = mongoose.model('entries', entriesSchema);
 
 module.exports = model;
+
+var entriesModel = require('mongoose').model('entries');
+
+exports.seedEntries = function seedEntries() {
+    entriesModel.find({}).exec(function (err, collection) {
+        if (collection.length === 0) {
+            entriesModel.create({ title: 'entries One' });
+            entriesModel.create({ title: 'entries Two' });
+        }
+    });
+}
