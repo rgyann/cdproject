@@ -33,7 +33,7 @@ router.put('/posts:id', function(req, res) {
     return res.status(500).json({err: "Ids don't match!"});
   }
   entries.findByIdAndUpdate(id, entries, {new: true}, function(err, entries) {
-    if(err)
+    if(err) {
       return res.status(500).json({err: err.messge});
     }
     res.json({'entries': entries, message: 'entries Created'});
