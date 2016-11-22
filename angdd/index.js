@@ -1,13 +1,13 @@
 'use strict';
 
 var express = require('express');
-var blog = require('./data/models/entries.js');
+var Entries = require('./data/models/entries.js');
 //var entries = require('../../data/entries.json');
 
 var router = express.Router();
 
 router.get('/posts', function(req, res) {
-  blog.find({}, function(err, entries) {
+  Entries.find({}, function(err, entries) {
     if(err) {
       // do something
       return res.status(500).json({message: err.message});
@@ -18,7 +18,7 @@ router.get('/posts', function(req, res) {
 
 router.post('/posts', function(req, res) {
   var entries = req.body;
-  entries.create(entries, function(err, entries) {
+  Entries.create(entries, function(err, entries) {
     if(err) {
       return res.status(500).json({err: err.messge});
     }
@@ -32,13 +32,15 @@ router.put('/posts:id', function(req, res) {
   if(entries && entries._id !== id) {
     return res.status(500).json({err: "Ids don't match!"});
   }
-  entries.findByIdAndUpdate(id, entries, {new: true}, function(err, entries) {
+  Entries.findByIdAndUpdate(id, entries, {new: true}, function(err, entries) {
     if(err) {
       return res.status(500).json({err: err.messge});
     }
     res.json({'entries': entries, message: 'entries Created'});
   })
 });
+
+module.exports = router;
 
 //entries: Add PUT route to update existing entries
 
