@@ -2,7 +2,7 @@
 
 var express = require('express');
 var parser = require('body-parser');
-var router = express.Router();
+var router = require('./index.js');
 
 var app = express();
 
