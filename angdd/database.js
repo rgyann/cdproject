@@ -9,3 +9,8 @@ mongoose.connect('mongodb://localhost/angdd', function(err) {
     console.log('Successfully connected to Mongo!');
   }
 });
+
+module.exports = {
+    url : 'mongodb://localhost/'
+};
+
