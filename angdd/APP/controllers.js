@@ -2,9 +2,9 @@ angular.module('app.controllers', [
         'app.directives'
 ])
         .controller('PostController', ['$scope', '$http', function($scope, $http) {
-                $http.get('data/posts.json').success(function(data) {
-                        $scope.posts = data;
-
+                $http.get('api/posts').success(function(data) {
+                        console.log(data);
+                        $scope.posts = data.entries;
                 });
         }])
         .controller('PageController', ['$scope', '$routeParams', '$http', function($scope, $routeParams, $http) {
