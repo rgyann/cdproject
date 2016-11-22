@@ -9,7 +9,7 @@ var entries = [
 ];
 
 entries.forEach(function (entries, index) {
-  Entries.find({ 'name': entries }, function(err, todos) {
+  Entries.find({ 'name': entries }, function(err, entries) {
   	if (!err && !entries.length) {
       Entries.create({ completed: false, name: entries });
   	   }
