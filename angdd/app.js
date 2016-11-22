@@ -8,6 +8,8 @@ var app = express();
 
 require('./database');
 
+require('./seeds/seed');
+
 var path = require('path');
 
 var fs = require('fs');
