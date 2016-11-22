@@ -9,9 +9,9 @@ var entries = [
 ];
 
 entries.forEach(function (entries, index) {
-  Entries.find({ 'name': entries }, function(err, entries) {
+  Entries.find({ 'title': entries }, function(err, entries) {
   	if (!err && !entries.length) {
-      Entries.create({ completed: false, name: entries });
+      Entries.create({ exerpt: false, title: entries });
   	   }
   });
 });
