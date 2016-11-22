@@ -1,17 +1,16 @@
 'use strict';
 
-var entries = require('./models/entries');
+var Entries = require('../data/models/entries.js');
 
 var entries = [
-	'Feed the dog',
-	'Walk the kids',
-	'Water the trees'
+	{ title: 'entries One', except: false },
+	{ title: 'entries Two', except: false }
 ];
 
-entries.forEach(function (entries, index) {
-  Entries.find({ 'title': entries }, function(err, entries) {
+entries.forEach(function (entry, index) {
+  Entries.find({ 'title': entry.title }, function(err, entries) {
   	if (!err && !entries.length) {
-      Entries.create({ exerpt: false, title: entries });
-  	   }
+      	Entries.create(entry);
+		}
   });
 });
